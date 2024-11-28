@@ -77,8 +77,8 @@ def registration(
 	else:
 		user['id'] = 1
 	save_data_to_file(data=user, file_name='users')
-	print("User created successfully!")
-	return
+	# print("")
+	return "User created successfully!"
 
 
 def login_user(username, password):

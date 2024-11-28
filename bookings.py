@@ -25,13 +25,14 @@ def book_room(user_id: int, room_id: int, check_in: str, check_out: str):
 		print("Ошибка: дата выезда должна быть позже даты заезда.")
 		return
 
-	booking = load_data_from_file(file_name='bookings', param_key='room_id', param_value=room_id)
+	bookings = load_data_from_file(file_name='bookings', param_key='room_id', param_value=room_id, quantity='all')
 
-	if booking is not None:
-		if not (check_out_date <= datetime.strptime(booking["check_in"], "%d-%m-%Y").date()
-		        or check_in_date >= datetime.strptime(booking["check_out"], "%d-%m-%Y").date()):
-			print("Номер занят на указанные даты.")
-			return
+	if bookings is not None:
+		for booking in bookings:
+			if not (check_out_date <= datetime.strptime(booking["check_in"], "%d-%m-%Y").date()
+			        or check_in_date >= datetime.strptime(booking["check_out"], "%d-%m-%Y").date()):
+				print("Номер занят на указанные даты.")
+				return
 	if load_data_from_file('bookings', param_key='all') is not None:
 		booking_id = load_data_from_file(file_name='bookings', param_key='id') + 1
 	else:
@@ -52,9 +53,9 @@ def book_room(user_id: int, room_id: int, check_in: str, check_out: str):
 
 	if room["status"] == 0:
 		update_room_status(room_id=room_id)
-	print(f"Бронирование успешно! ID бронирования: {booking_id}")
 	save_data_to_file(file_name='bookings', data=booking)
-	return
+	# print()
+	return f"Бронирование успешно! ID бронирования: {booking_id}"
 
 
 def cancel_booking(booking_id):
@@ -71,8 +72,8 @@ def cancel_booking(booking_id):
 		if load_data_from_file(file_name='bookings', param_key='room_id', param_value=booking['room_id']) is None:
 			update_room_status(room_id=booking['room_id'])
 	else:
-		print(f"Booking with ID {booking_id} doesn't exist.")
-		return
+		# print()
+		return f"Booking with ID {booking_id} doesn't exist."
 
 
 def view_bookings(user_id=None):
@@ -87,7 +88,7 @@ def view_bookings(user_id=None):
 				f"Комната с номером: {booking['room_id']}, "
 				f"Имя гостя: {user['first_name']} {user['last_name']} "
 				f"На период с {booking['check_in']} до {booking['check_out']}")
-		return
+		return "Это все брони."
 
 	user = load_data_from_file(file_name='users', param_key='id', param_value=user_id)
 	print(f"Все бронированные номера пользователя: {user['first_name']} {user['last_name']}")
@@ -101,5 +102,44 @@ def view_bookings(user_id=None):
 			f"Тип комнаты {room_types[room['type']]} "
 			f"На период с {booking['check_in']} до {booking['check_out']}")
 
-	return
+	return  "Это все брони."
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

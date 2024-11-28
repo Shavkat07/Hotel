@@ -1,21 +1,5 @@
 [
     {
-        "id": 1,
-        "username": "helloworld1",
-        "first_name": "Shava",
-        "last_name": "Kurbanov",
-        "email": "alex123@gmail.com",
-        "password": "import123"
-    },
-    {
-        "id": 2,
-        "username": "helloworld",
-        "first_name": "Shavkat",
-        "last_name": "Kurbanov",
-        "email": "alex12883@gmail.com",
-        "password": "import123"
-    },
-    {
         "id": 3,
         "username": "jhondoe",
         "first_name": "Jhon",
@@ -23,7 +7,7 @@
         "email": "jhon12883@gmail.com",
         "password": "import123",
         "user_type": "guest",
-        "bookings": 8
+        "bookings": 16
     },
     {
         "id": 4,
@@ -43,5 +27,15 @@
         "password": "import123",
         "user_type": "guest",
         "bookings": 0
+    },
+    {
+        "id": 6,
+        "username": "lasjkdfk",
+        "first_name": "shavkat",
+        "last_name": "Kurbanov",
+        "email": "iasmodfioigjt@gaskldh",
+        "password": "import123",
+        "user_type": "guest",
+        "bookings": 1
     }
 ]

@@ -38,7 +38,7 @@
     {
         "id": 8,
         "type": "standard_double_room",
-        "status": 0,
+        "status": 1,
         "floor": 1
     },
     {
@@ -439,6 +439,24 @@
     },
     {
         "id": 75,
+        "type": "presidential_room",
+        "status": 0,
+        "floor": 3
+    },
+    {
+        "id": 76,
+        "type": "presidential_room",
+        "status": 0,
+        "floor": 3
+    },
+    {
+        "id": 77,
+        "type": "presidential_room",
+        "status": 0,
+        "floor": 3
+    },
+    {
+        "id": 78,
         "type": "presidential_room",
         "status": 0,
         "floor": 3

@@ -43,15 +43,7 @@ def add_room(room_type: str, count: int):
 		save_data_to_file(data=room, file_name="rooms")
 		room["id"] += 1
 
-	print("Room Added Successfully")
-	return
-
-
-# def view_rooms(id: int='all', room_type: str='all', status = -1):
-# 	if status == -1 and room_type == "all" and id == "all":
-# 		load_data_from_file("rooms", param_key='all')
-# 	else:
-# 		load_data_from_file("rooms", param_key='status', param_value=status)
+	return "Room Added Successfully"
 
 
 def update_room_status(room_id):
@@ -68,5 +60,8 @@ def update_room_status(room_id):
 def delete_room(room_id):
 	delete_data(file_name="rooms", param_key='id', param_value=room_id)
 
-
-# print(delete_room(1))
+# def view_rooms(id: int='all', room_type: str='all', status = -1):
+# 	if status == -1 and room_type == "all" and id == "all":
+# 		load_data_from_file("rooms", param_key='all')
+# 	else:
+# 		load_data_from_file("rooms", param_key='status', param_value=status)

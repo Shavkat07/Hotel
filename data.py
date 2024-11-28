@@ -5,7 +5,7 @@ FILES_PATH = './DataBase/'
 
 
 def save_data_to_file(data: dict, file_name: str):
-	file_path = FILES_PATH + file_name + '.json'
+	file_path = FILES_PATH + file_name + '.json'   # ./Database/test.json
 
 	# Если файл не существует, создаем его
 	if not os.path.exists(file_path):
@@ -18,6 +18,7 @@ def save_data_to_file(data: dict, file_name: str):
 		try:
 			with open(file_path, 'r') as file:
 				existing_data = json.load(file)
+
 		except json.JSONDecodeError:
 			# Если файл пустой или содержит некорректный JSON, начинаем с пустого списка
 			existing_data = []
@@ -29,6 +30,7 @@ def save_data_to_file(data: dict, file_name: str):
 		with open(file_path, 'w') as file:
 			json.dump(existing_data, file, indent=4)
 
+# save_data_to_file()
 
 def load_data_from_file(file_name: str, param_key: str, param_value=0, quantity=1):
 	if not os.path.exists(FILES_PATH + file_name + '.json'):
@@ -140,7 +142,7 @@ def delete_data(file_name: str, param_key: str, param_value=-1):
 		with open(file_path, 'w') as file:
 			json.dump(data, file, indent=4)
 
-		print(f"Удалены объекты с параметром {param_key} равных на {param_value}.")
+		print(f"Удалены объекты с параметром {param_key} равных на {param_value}. С файла {file_name + '.json'}")
 
 	except FileNotFoundError:
 		print(f"Файл {file_name} не найден.")
