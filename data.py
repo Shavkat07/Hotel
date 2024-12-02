@@ -1,11 +1,13 @@
 import os
+# import numpy
+
 import json
 
 FILES_PATH = './DataBase/'
 
 
 def save_data_to_file(data: dict, file_name: str):
-	file_path = FILES_PATH + file_name + '.json'   # ./Database/test.json
+	file_path = FILES_PATH + file_name + '.json'   # ./Database/users.json
 
 	# Если файл не существует, создаем его
 	if not os.path.exists(file_path):
@@ -17,7 +19,7 @@ def save_data_to_file(data: dict, file_name: str):
 		# Если файл существует, пытаемся загрузить данные
 		try:
 			with open(file_path, 'r') as file:
-				existing_data = json.load(file)
+				existing_data = json.load(file)  #   [{}, {}, {},]
 
 		except json.JSONDecodeError:
 			# Если файл пустой или содержит некорректный JSON, начинаем с пустого списка
@@ -34,11 +36,12 @@ def save_data_to_file(data: dict, file_name: str):
 
 def load_data_from_file(file_name: str, param_key: str, param_value=0, quantity=1):
 	if not os.path.exists(FILES_PATH + file_name + '.json'):
-		return None  # Если файла нет, пользователя нет
+		return None  # Если файла нет, данных тоже нет
 
 	with open(FILES_PATH + file_name + '.json', 'r') as file:
+		# print(file)
 		data = json.load(file)
-
+	# print(data)
 	if param_key == 'all':
 		return data
 
@@ -47,6 +50,7 @@ def load_data_from_file(file_name: str, param_key: str, param_value=0, quantity=
 			return data[-1]['id']
 		else:
 			return 0
+
 	if quantity == 1:
 		for i in data:
 			if i.get(param_key) == param_value:
@@ -114,7 +118,7 @@ def delete_data(file_name: str, param_key: str, param_value=-1):
 	:param param_key: Параметр объекта которого нужно изменить.
 	:param new_param_value: Новое значение для параметра `status`.
 	"""
-	file_path = FILES_PATH + file_name + '.json'
+	file_path = FILES_PATH + file_name + '.json' # ./Database/rooms.json
 	try:
 		# Открываем и загружаем данные из JSON-файла
 		with open(file_path, 'r') as file:

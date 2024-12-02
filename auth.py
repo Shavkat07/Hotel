@@ -72,46 +72,42 @@ def registration(
 	else:
 		print("Password must contain at least 8 characters and must contain at least one letter or number!!!")
 		return
+
 	if load_data_from_file(file_name='users', param_key='id', ) is not None:
 		user['id'] = load_data_from_file(file_name='users', param_key='id', ) + 1
 	else:
 		user['id'] = 1
+
 	save_data_to_file(data=user, file_name='users')
-	# print("")
 	return "User created successfully!"
 
-
-def login_user(username, password):
-	global _is_login  # global variebles haqida  https://www.w3schools.com/python/python_variables_global.asp
-
-	if load_data_from_file(file_name='users', param_key='username', param_value=username) is not None:
-		user = load_data_from_file(file_name='users', param_key='username', param_value=username)
-		if password == user.get('password'):
-			_is_login = True
-			print("Login successfully!")
-			return _is_login
-		else:
-			print("Password does not match")
-			return
-
-	else:
-		print("Username doesn't exist!!!")
-		return
-
-
-# login_user('shavkat', 'fasfsdfasfdsf123')
 #
-# print(is_login)
+# def login_user(username, password):
+# 	global _is_login  # global variebles haqida  https://www.w3schools.com/python/python_variables_global.asp
+#
+# 	if load_data_from_file(file_name='users', param_key='username', param_value=username) is not None:
+# 		user = load_data_from_file(file_name='users', param_key='username', param_value=username)
+# 		if password == user.get('password'):
+# 			_is_login = True
+# 			print("Login successfully!")
+# 			return _is_login
+# 		else:
+# 			print("Password does not match")
+# 			return
+#
+# 	else:
+# 		print("Username doesn't exist!!!")
+# 		return
 
 
-def logout():
-	global _is_login
-
-	if _is_login:
-		_is_login = False
-
-	return "Logout successfully!"
-
-
-def is_logged_in():
-	return _is_login
+# def logout():
+# 	global _is_login
+#
+# 	if _is_login:
+# 		_is_login = False
+#
+# 	return "Logout successfully!"
+#
+#
+# def is_logged_in():
+# 	return _is_login

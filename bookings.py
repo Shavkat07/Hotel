@@ -54,7 +54,7 @@ def book_room(user_id: int, room_id: int, check_in: str, check_out: str):
 	if room["status"] == 0:
 		update_room_status(room_id=room_id)
 	save_data_to_file(file_name='bookings', data=booking)
-	# print()
+
 	return f"Бронирование успешно! ID бронирования: {booking_id}"
 
 
