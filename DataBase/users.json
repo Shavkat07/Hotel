@@ -1,0 +1,12 @@
+[
+    {
+        "id": 1,
+        "username": "shavkat",
+        "first_name": "Shavkat",
+        "last_name": "Kurbanov",
+        "email": "kadsfhk@gmail.com",
+        "password": "qwert1234",
+        "user_type": "guest",
+        "bookings": 2
+    }
+]
